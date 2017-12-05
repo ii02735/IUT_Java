@@ -1,0 +1,43 @@
+package exo1_serveur;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Service implements Runnable{
+	
+	private ServerSocket receveur;
+	private Socket SocketClient;
+	private static int cpt = 1;
+	private final int numero;
+	public Service(Socket SocketClient, ServerSocket receveur)
+	{
+		this.SocketClient = SocketClient;
+		this.receveur = receveur;
+		this.numero = cpt++; //Ce morceau de code est seulement exécuté par LE serveur (il n'en existe qu'un seul --> il n'y a pas une autre pile d'exécution (pas de partage de serveur), donc cela est thread safe
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			
+			System.out.println("Connexion " + this.numero + " démarée");
+			BufferedReader socketIn = new BufferedReader(new InputStreamReader(this.SocketClient.getInputStream()));
+			PrintWriter socketOut = new PrintWriter(this.SocketClient.getOutputStream(),true);
+			StringBuffer message = new StringBuffer(socketIn.readLine());
+			System.out.println("Connexion "+this.numero+ "<-- " + message);
+			message.reverse(); //On inverse le message
+			System.out.println("Connexion "+this.numero+ "--> " + message);
+			socketOut.println(message);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+}

@@ -1,0 +1,21 @@
+package exo1_serveur;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class Serveur {
+	private Socket serveur;
+	public Serveur(String adresse, int port)
+	{
+		try {
+			this.serveur = new Socket(adresse,port);
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Échec du lancement de la Socket");
+		}
+	}
+}

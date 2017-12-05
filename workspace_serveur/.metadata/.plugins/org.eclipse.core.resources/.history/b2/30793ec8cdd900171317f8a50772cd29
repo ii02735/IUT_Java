@@ -1,0 +1,5 @@
+package exo1_serveur;
+
+public class Application {
+
+}

@@ -26,3 +26,21 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.sage.x3.xdt.common.core 1 0 2017-12-05 15:46:43.233
+!MESSAGE SAFE X3 bundle version '2.0.4.rev019-20170123-1429' on Eclipse '4.6.2.M20161124-1400'
+
+!ENTRY com.sage.x3.xdt.dltk.launching 1 1 2017-12-05 15:46:43.761
+!MESSAGE Dbgp service running at port 10000
+
+!ENTRY com.sage.x3.xdt.common.core 1 0 2017-12-05 15:46:44.214
+!MESSAGE Dbgp proxy discovering finished by StatusInfo OK: null
+
+!ENTRY com.sage.x3.xdt.common.core 1 0 2017-12-05 15:46:45.790
+!MESSAGE HTTP preferences updated to use fixed port 5493.
+
+!ENTRY com.sage.x3.xdt.http.server 1 0 2017-12-05 15:46:45.873
+!MESSAGE Starting X3 http server on port 5493
+
+!ENTRY com.sage.x3.xdt.http.server 1 0 2017-12-05 15:46:47.152
+!MESSAGE X3 http server started on port 5493

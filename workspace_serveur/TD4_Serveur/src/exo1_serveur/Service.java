@@ -9,7 +9,7 @@ import java.net.Socket;
 public class Service implements Runnable{
 	
 	private Socket SocketClient;
-	private static int cpt = 1;
+	public static int cpt = 1;
 	private final int numero;
 	public Service(Socket SocketClient)
 	{
@@ -17,12 +17,12 @@ public class Service implements Runnable{
 		this.numero = cpt++; //Ce morceau de code est seulement exécuté par LE serveur (il n'en existe qu'un seul --> il n'y a pas une autre pile d'exécution (pas de partage de serveur), donc cela est thread safe
 	}
 	
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
 			
-			System.out.println("Connexion " + this.numero + " démarée");
 			BufferedReader socketIn = new BufferedReader(new InputStreamReader(this.SocketClient.getInputStream()));
 			PrintWriter socketOut = new PrintWriter(this.SocketClient.getOutputStream(),true);
 			StringBuffer message = new StringBuffer(socketIn.readLine());
@@ -35,6 +35,12 @@ public class Service implements Runnable{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		this.SocketClient.close();
 	}
 	
 }

@@ -15,6 +15,7 @@ public class Serveur implements Runnable {
 			System.out.println("Serveur lancé sur le port " + port);
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Échec du lancement de la Socket");
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -25,13 +26,14 @@ public class Serveur implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+
 		try {
-			this.serveur = new ServerSocket();
 			while(true)
 			{
-				Socket Socket_Serveur = this.serveur.accept();
 				
-				Socket_Serveur.close();
+				Socket Socket_Serveur = this.serveur.accept();
+				System.out.println("Connexion "+ Service.cpt  + " démarrée");
+				new Thread(new Service(Socket_Serveur)).start(); //À chaque initialisation le numéro de connexion sera incrémenté
 				
 			}
 		} catch (IOException e) {
@@ -40,4 +42,5 @@ public class Serveur implements Runnable {
 		}
 		
 	}
+
 }

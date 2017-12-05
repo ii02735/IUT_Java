@@ -1,0 +1,44 @@
+package exo1_serveur;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class Serveur implements Runnable {
+	private ServerSocket serveur;
+	
+	public Serveur(int port)
+	{
+		try {
+			this.serveur = new ServerSocket(port);
+			System.out.println("Serveur lancé sur le port " + port);
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Échec du lancement de la Socket");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Échec du lancement de la Socket");
+		}
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			this.serveur = new ServerSocket();
+			while(true)
+			{
+				Socket Socket_Serveur = this.serveur.accept();
+				new Service(Socket_Serveur);
+				Socket_Serveur.close();
+				
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+}

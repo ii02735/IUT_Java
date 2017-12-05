@@ -26,9 +26,9 @@ public class Service implements Runnable{
 			BufferedReader socketIn = new BufferedReader(new InputStreamReader(this.SocketClient.getInputStream()));
 			PrintWriter socketOut = new PrintWriter(this.SocketClient.getOutputStream(),true);
 			StringBuffer message = new StringBuffer(socketIn.readLine());
-			System.out.println("Connexion "+this.numero+ " <-- " + message);
+			System.out.println("Connexion "+this.numero+ " a reçu " + message);
 			message.reverse(); //On inverse le message
-			System.out.println("Connexion "+this.numero+ " --> " + message);
+			System.out.println("Connexion 1 terminée");
 			socketOut.println(message);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

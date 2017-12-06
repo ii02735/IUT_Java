@@ -1,0 +1,8 @@
+<puck-config>
+	<out>out</out>
+	<workspace>C:\Users\yadallee\Desktop\JAVA_IUT\workspace_CPOA\TP4</workspace>
+	<decouple>decouple.wld</decouple>
+	<src rec=".java">src</src>
+	<log>puck-log.txt</log>
+	<classpath rec=".jar">lib</classpath>
+</puck-config>

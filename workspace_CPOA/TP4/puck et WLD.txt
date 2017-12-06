@@ -1,0 +1,12 @@
+Dans le fichier wld on indique à puck les contraintes à respecter.
+Exemple :
+
+import [gerantMessages]
+textes = [Message, gerantMessages]
+formats = [DashCap, StarMin]
+hide formats from textes 
+hide textes from formats
+
+hide = ne pas utiliser un ensemble de classes depuis un autre ensemble en les cachant
+
+Si les contraintes imposées ne sont pas respectées, alors puck affichera les dépendences qui contredisent les contraintes en rouge

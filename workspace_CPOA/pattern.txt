@@ -1,0 +1,4 @@
+Bridge
+Composite
+Prototype
+Singleton (vu l'année dernière --> bloque la seconde initialisation d'un attribut)

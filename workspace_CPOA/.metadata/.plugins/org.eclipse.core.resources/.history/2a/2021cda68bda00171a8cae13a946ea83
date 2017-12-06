@@ -1,0 +1,16 @@
+﻿package gérantMessages;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class MessageTest {
+	@Test
+	public void test() {
+		String texte = "Bonne Année !";
+        Message sm = new StarMin(texte);
+        Message dc = new DashCap(texte);
+
+		assertEquals(" * bonne année ! * ", sm.toString());
+		assertEquals(" # BONNE ANNÉE ! # ", dc.toString());
+	}
+}

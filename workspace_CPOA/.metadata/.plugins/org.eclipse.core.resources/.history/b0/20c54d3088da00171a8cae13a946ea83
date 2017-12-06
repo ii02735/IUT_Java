@@ -1,0 +1,17 @@
+package gérantMessages;
+
+public abstract class Message {
+	protected String texte;
+	
+	public Message(String message) {
+		this.texte = message;
+	}
+    public String getTexte() { return texte; }
+    abstract public String getMotif();  
+    
+    @Override
+    public String toString() {
+    	return getMotif() + getTexte() + getMotif();
+    }
+}
+        

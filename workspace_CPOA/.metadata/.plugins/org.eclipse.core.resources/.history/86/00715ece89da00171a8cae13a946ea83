@@ -1,0 +1,10 @@
+package gérantMessages;
+
+public class DashCap{
+	public DashCap(String message) {
+		
+	}
+	public String getTexte() { return texte.toUpperCase(); }
+	@Override
+	public String getMotif() { return " # "; }
+}

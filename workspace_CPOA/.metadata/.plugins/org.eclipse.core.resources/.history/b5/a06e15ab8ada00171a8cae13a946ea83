@@ -1,0 +1,13 @@
+package gérantMessages;
+
+public class DashCap implements IFormat{
+	private Message message;
+	
+	public DashCap(Message message) {
+		this.message = message;
+	}
+	
+	@Override
+	public String getTexte() { return message.getTexte().toUpperCase();}
+	public String getMotif() { return " # ";}
+}

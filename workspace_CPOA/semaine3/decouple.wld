@@ -1,0 +1,3 @@
+import[calcul]
+matricesImpl=[MatricePleine, MatriceCreuse]
+hide matricesImpl from Calcul

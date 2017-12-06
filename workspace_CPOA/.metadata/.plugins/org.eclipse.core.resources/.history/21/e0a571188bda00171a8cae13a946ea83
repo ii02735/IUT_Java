@@ -1,0 +1,8 @@
+package gérantMessages;
+
+public interface IFormat {
+	
+	String getTexte();
+	
+	String getMotif();
+}

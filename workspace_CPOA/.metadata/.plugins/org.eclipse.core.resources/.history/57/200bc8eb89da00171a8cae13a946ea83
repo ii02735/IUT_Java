@@ -1,0 +1,12 @@
+package gérantMessages;
+
+public class StarMin implements IFormat{
+	private Message message;
+	public StarMin(String message) {
+		this.message = message;
+	}
+	
+	public String getMotif() { return " * "; }
+	
+	public String getTexte() { return texte.toLowerCase(); }
+}

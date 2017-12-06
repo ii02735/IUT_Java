@@ -1,0 +1,11 @@
+package gérantMessages;
+
+public class StarMin extends Message {
+	public StarMin(String message) {
+		super(message);
+	}
+	@Override
+	public String getMotif() { return " * "; }
+	@Override
+	public String getTexte() { return texte.toLowerCase(); }
+}

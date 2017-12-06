@@ -3,10 +3,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import Format.DashCap;
-import Format.IFormat;
-import Format.StarMin;
-
 public class MessageTest {
 	@Test
 	public void test() {

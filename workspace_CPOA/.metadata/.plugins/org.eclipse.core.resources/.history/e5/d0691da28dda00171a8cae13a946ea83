@@ -1,7 +1,5 @@
 package gérantMessages;
 
-import Format.IFormat;
-
 public class Message {
 	
 	private IFormat format;

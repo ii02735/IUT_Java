@@ -1,0 +1,5 @@
+import [gerantMessages, formats, tests]
+texte = [Message, gerantMessages, IFormat]
+formatage = [DashCap, StarMin]
+hide formats from texte
+hide Message from formatage

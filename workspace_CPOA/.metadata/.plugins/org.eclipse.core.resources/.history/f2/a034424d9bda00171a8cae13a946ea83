@@ -1,0 +1,9 @@
+package fileSystem;
+
+public interface IElement {
+
+	String display(String path);
+	String ls();
+	String getName();
+	
+}

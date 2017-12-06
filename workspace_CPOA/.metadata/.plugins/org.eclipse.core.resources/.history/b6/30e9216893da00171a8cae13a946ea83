@@ -1,0 +1,17 @@
+package files;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FileTest {
+
+	@Test
+	public void test() {
+		String nom ="Mes documents";
+		File f = new File(nom);
+		assertEquals(f.getName(), nom);
+		assertEquals(f.display(""), nom + "\n");
+	}
+
+}

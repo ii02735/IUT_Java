@@ -1,0 +1,31 @@
+package fileSystem;
+
+public class File implements IElement{
+	private String name;
+	public File(String name) {
+		this.name = name;
+	}
+
+	public String display(String path) {
+		return (path + name + "\n");
+	}// println --> attention : on l'utilise pour le débogage ou le main mais
+		// pas dans les classes
+	
+	@Override
+	public String ls() {
+		return display("");
+	}
+
+	public String getName()
+	{
+		return this.name;
+	}
+
+	@Override
+	public void add(IElement d) {
+		assert false : "Ajout impossible";
+		
+	}
+
+	
+}

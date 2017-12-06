@@ -1,0 +1,43 @@
+package fileSystem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Directory implements IElement{
+
+	private String name;
+	private List<IElement> files = new ArrayList<IElement>();
+	private List<IElement> directories = new ArrayList<IElement>();
+	
+	public Directory(String name) {
+		this.name = name;
+	}
+
+	public void add(File f) {
+		files.add(f);
+	}
+
+	public void add(Directory d) {
+		directories.add(d);
+	}
+
+	public String display(String path) {
+		
+		String npath = path + name + "/";
+		for (File f : files)
+			npath += f.display(npath);
+		for (Directory d : directories)
+			npath += d.display(npath);
+		return npath;
+		
+	}
+
+	public String ls() {
+		return display("");
+	}
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
+}

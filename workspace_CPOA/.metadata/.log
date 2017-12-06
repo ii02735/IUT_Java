@@ -93,3 +93,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.sage.x3.xdt.common.core 1 0 2017-12-06 15:18:58.091
 !MESSAGE Dbgp proxy discovering finished by StatusInfo OK: null
+
+!ENTRY com.sage.x3.xdt.common.core 1 0 2017-12-06 16:18:58.108
+!MESSAGE Dbgp proxy discovering finished by StatusInfo OK: null

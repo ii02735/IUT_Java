@@ -1,0 +1,8 @@
+<puck-config>
+	<out>out</out>
+	<src rec=".java">src</src>
+	<workspace>C:\Users\yadallee\Desktop\Mikal\services singleton</workspace>
+	<decouple>decouple.wld</decouple>
+	<classpath rec=".jar">lib</classpath>
+	<log>puck-log.txt</log>
+</puck-config>

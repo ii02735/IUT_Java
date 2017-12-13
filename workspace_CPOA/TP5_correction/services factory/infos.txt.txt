@@ -1,0 +1,1 @@
+En plus du pattern factory, on a utilisé le pattern prototype

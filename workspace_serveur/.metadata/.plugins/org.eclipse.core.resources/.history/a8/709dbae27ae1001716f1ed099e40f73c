@@ -1,0 +1,24 @@
+package serveur;
+
+public class ServeurReservation extends Serveur{
+
+	public ServeurReservation(int port) {
+		super(port);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void setServeurName() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+}

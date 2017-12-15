@@ -1,0 +1,22 @@
+package serveur;
+
+public class ServeurRetour extends Serveur{
+
+	public ServeurRetour(int port) {
+		super(port);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public void setServeurName() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

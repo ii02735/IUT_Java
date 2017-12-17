@@ -1,0 +1,6 @@
+package album;
+import java.util.*;
+
+public class Album {
+	private ArrayList<Chanson> chansons;
+}

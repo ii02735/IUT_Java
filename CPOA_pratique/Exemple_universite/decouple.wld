@@ -1,0 +1,3 @@
+import [factory, structure]
+dep = [Universite, Etudiant]
+hide factory from dep

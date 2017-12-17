@@ -1,0 +1,8 @@
+package album;
+
+public class Chanson implements Contenu{
+	public void lancer()
+	{
+		System.out.println("Tra la la");
+	}
+}

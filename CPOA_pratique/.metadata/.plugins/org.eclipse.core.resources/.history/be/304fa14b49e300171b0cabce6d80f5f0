@@ -1,0 +1,47 @@
+package structure;
+
+import java.util.ArrayList;
+
+import factory.IEtudiantFactory;
+
+public class Université {
+	
+	private IEtudiantFactory fabrique;
+	private ArrayList<Etudiant> listeEtu;
+	private String nom;
+	
+	public Université(String nom,IEtudiantFactory fabrique) {
+		this.nom = nom;
+		setFabrique(fabrique);
+		this.listeEtu = new ArrayList<>();
+	}
+	
+	public String getNom()
+	{
+		return this.nom;
+	}
+	
+	public void ajouterEtu(String année, String nom)
+	{
+		Etudiant e = fabrique.buildEtudiant(année, nom);
+		this.listeEtu.add(e);
+	}
+	
+	public ArrayList<Etudiant> getListe()
+	{
+		return this.listeEtu;
+	}
+	
+	public void setFabrique(IEtudiantFactory fabrique)
+	{
+		this.fabrique = fabrique;
+	}
+	
+	public String afficherListe()
+	{
+		String s = "";
+		for(Etudiant e : this.listeEtu)
+			s+=e.getName() + " " + e.getClass().getName()+"\n";
+		return s;
+	}
+}

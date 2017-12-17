@@ -1,0 +1,8 @@
+<puck-config>
+	<src rec=".java">src</src>
+	<log>puck-log.txt</log>
+	<decouple>decouple.wld</decouple>
+	<out>out</out>
+	<classpath rec=".jar">lib</classpath>
+	<workspace>C:\Users\bilaa\Desktop\CPOA_pratique\Cours_cpoa3_dependance</workspace>
+</puck-config>

@@ -1,0 +1,29 @@
+package structure;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import factory.IEtudiantFactory;
+
+public class Universitétest {
+	
+	private Université u;
+	private IEtudiantFactory fabrique;
+	
+	@Before
+	public void init()
+	{
+		this.u = new Université("IUT Paris Descartes", fabrique);
+	}
+	@Test
+	public void ajout() {
+		this.u.ajouterEtu("L1", "Barnabé");
+		this.u.ajouterEtu("L2", "Yadallee");
+		this.u.ajouterEtu("L1", "Edouard");
+		
+		System.out.println(this.u.afficherListe());
+	}
+
+}

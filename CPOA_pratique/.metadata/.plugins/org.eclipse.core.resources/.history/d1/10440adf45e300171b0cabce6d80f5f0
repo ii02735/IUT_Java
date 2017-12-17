@@ -1,0 +1,24 @@
+package factory;
+
+import structure.*;
+
+public class L_EtudiantFactory implements IEtudiantFactory{
+
+	@Override
+	public void buildEtudiant(String annee, String promo) {
+		// TODO Auto-generated method stub
+		Etudiant etu = null;
+		switch(annee) {
+		case "L1":
+			etu = new L1Etudiant();
+			break;
+		case "L2":
+			etu = new L2Etudiant();
+			break;
+		default:
+			
+		}
+		
+	}
+
+}

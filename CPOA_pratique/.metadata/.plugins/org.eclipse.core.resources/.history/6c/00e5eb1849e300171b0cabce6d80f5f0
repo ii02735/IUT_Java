@@ -1,0 +1,12 @@
+package factory;
+
+import structure.Etudiant;
+
+public class M2Etudiant extends Etudiant {
+
+	public M2Etudiant(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
+}

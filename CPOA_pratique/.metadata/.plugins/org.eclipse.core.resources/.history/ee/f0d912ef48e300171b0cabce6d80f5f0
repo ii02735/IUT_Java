@@ -1,0 +1,31 @@
+package structure;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import factory.L_EtudiantFactory;
+
+public class Universitétest {
+	
+	private Université u;
+	
+	@Before
+	public void init()
+	{
+		this.u = new Université("IUT Paris Descartes", new L_EtudiantFactory());
+	}
+	@Test
+	public void ajout() {
+		this.u.ajouterEtu("L1", "Barnabé");
+		this.u.ajouterEtu("L2", "Yadallee");
+		this.u.ajouterEtu("L1", "Edouard");
+		
+		assertEquals(this.u.getListe().size(),3);
+		assertEquals(this.u.getListe().get(1).getClass().getName(),"structure.L2Etudiant");
+		
+		System.out.println(this.u.afficherListe());
+	}
+
+}

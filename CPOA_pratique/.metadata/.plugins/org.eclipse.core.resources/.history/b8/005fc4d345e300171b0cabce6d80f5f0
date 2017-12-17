@@ -1,0 +1,11 @@
+package factory;
+
+public class L_EtudiantFactory implements IEtudiantFactory{
+
+	@Override
+	public void buildEtudiant(String annee, String promo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

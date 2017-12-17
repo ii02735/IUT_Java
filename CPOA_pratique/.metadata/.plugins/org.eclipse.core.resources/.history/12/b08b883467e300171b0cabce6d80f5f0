@@ -1,0 +1,21 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class FileSystemTest {
+
+	private Dossier folder;
+	@Before
+	public void init()
+	{
+		this.folder = new Dossier("Test");
+	}
+	@Test
+	public void test() {
+		this.folder.ajouter(new Dossier("Test2"));
+		this.folder.ajouter(new Fichier("fichier.txt","2 ko"));
+		this.folder.getListe().get(1).ajouter(new Fichier("dummy","0 ko"));
+	}
+
+}

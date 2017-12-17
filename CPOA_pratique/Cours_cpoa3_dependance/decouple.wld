@@ -1,0 +1,3 @@
+import [album]
+documents = [Chanson]
+hide documents from Album

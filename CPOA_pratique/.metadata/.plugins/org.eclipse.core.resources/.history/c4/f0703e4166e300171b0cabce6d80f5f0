@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Dossier implements Contenu{
+
+	private String nom;
+	private List<Contenu> enfants;
+	
+	public Dossier(String nom) {this.nom = nom; this.enfants = new ArrayList<>();}
+
+	@Override
+	public String sortie() {
+		String output = this.nom +"/\n";
+		for(Contenu enfants:this.enfants)
+		{
+			output += enfants.sortie();
+		}
+		return output;
+	}
+	
+	public void ajouter(Contenu c)
+	{
+		this.enfants.add(c);
+	}
+	
+	public void effacer(Contenu c)
+	{
+		this.enfants.remove(c);
+	}
+	
+}

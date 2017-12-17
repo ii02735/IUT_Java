@@ -1,0 +1,7 @@
+
+public interface Contenu {
+
+	String sortie();
+	void ajouter(Contenu c);
+	void supprimer(Contenu c);
+}

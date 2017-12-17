@@ -1,0 +1,14 @@
+
+public class Dossier implements Contenu{
+
+	private String nom;
+	
+	public Dossier(String nom) {this.nom = nom;}
+
+	@Override
+	public void sortie() {
+		System.out.println(this.nom+"/");
+		
+	}
+	
+}

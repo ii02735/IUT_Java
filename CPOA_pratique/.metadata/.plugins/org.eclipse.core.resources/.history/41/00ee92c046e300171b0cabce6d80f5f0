@@ -1,0 +1,18 @@
+package structure;
+
+import factory.IEtudiantFactory;
+
+public class Université {
+	
+	private IEtudiantFactory fabrique;
+	private String nom;
+	
+	public Université(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getNom()
+	{
+		return this.nom;
+	}
+}

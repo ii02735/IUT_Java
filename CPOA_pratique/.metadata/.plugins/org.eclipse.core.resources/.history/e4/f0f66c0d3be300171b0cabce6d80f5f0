@@ -1,0 +1,37 @@
+package album;
+import java.util.*;
+
+public class Album {
+	private ArrayList<Contenu> contenu;
+	
+	public Album() {
+		contenu = new ArrayList<Contenu>();
+	}
+	
+	public void ajouter(Contenu c) {
+		this.contenu.add(c);
+	}
+	
+	public void ecouter(int i) {
+		assert(i<0 || i>=contenu.size());
+		contenu.get(i).lancer();
+	}
+	
+	public void menu() {
+		String choix;
+		while(true) {
+			System.out.println("e)couter ou q)uitter");
+			Scanner in = new Scanner(System.in);
+			choix = in.nextLine();
+			if(choix.equals("e"))
+			{
+				ecouter(in.nextInt());
+			}
+			else if(choix.equals("q"))
+				break;
+			else
+				System.out.println("Choix invalide");
+		}
+			
+	}
+}

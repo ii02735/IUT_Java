@@ -1,0 +1,17 @@
+
+public class Fichier implements Contenu{
+
+	private String nom, espaceStocké;
+	public Fichier(String nom, String espaceStocké)
+	{
+		this.nom = nom;
+		this.espaceStocké = espaceStocké;
+	}
+	@Override
+	public String sortie() {
+		// TODO Auto-generated method stub
+		return this.nom + " : " + this.espaceStocké;
+	}
+	
+	
+}

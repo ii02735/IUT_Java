@@ -1,0 +1,108 @@
+Une dépendance est nuisible quand :
+
+A utilise B est nuisible quand A et B varient à des rythmes différents. (changement plus rapide chez A que chez B)
+
+A est difficile ou impossible à changer (trop de code...)
+
+B n'est qu'un cas parmi d'autres (A doit pouvoir utiliser n'importe quel cas)
+
+A -> B (lien direct à B : risque de dépendance nuisible)
+
+A -> C -> B (C joue le rôle d'une classe abstraite, elle utilise B quand A le demande -> le lien n'est pas direct donc la contrainte est corrigée)
+
+A peut aussi directement utiliser "la passerelle" des classes (càd C), A manipulera donc des instances de B typées A
+
+A -> C <- B (inversion de dépendance)
+
+Il est préférable d'appeler une méthode en retour plutôt que la variable (toString())
+Toujours déclarer ses attributs en PRIVATE !!!
+
+L'utilisation d'une interface (option extract interface) est importante, elle permet de casser les dépendances nuisibles (grâce à l'utilisation de méthodes polymorphes)
+Mais ne résout pas les dépendances des NEW !
+
+public static void main(String[] args) {
+Livre livre = new Livre("One Piece");
+System.out.println(livre);
+livre.emprunter();
+System.out.println(livre);
+}
+--> code pas bon : pourquoi directement utiliser une instance de Livre ? (plusieurs cas pouvant exister)
+
+public static void main(String[] args) {
+IEmpruntable livre = new Livre("One Piece");
+System.out.println(livre);
+livre.emprunter();
+System.out.println(livre);
+}
+--> code corrigé : IEmpruntable est une interface, et est implémentée dans Livre comme dans D'AUTRES classes
+
+Il est aussi important de remplacer les conditions par du polymorphisme :
+String langue = "français";
+if (langue.equals("français"))
+System.out.println("Bonjour");
+else
+System.out.println("Hello"); --> faux (on risque de rajouter du code (donc il y a vulnérabilité) si une autre langue existerait)
+
+Langue la = new Français();
+System.out.println(la.salutation());
+
+public class Langue {
+public String salutation()
+{return "Hello";}
+}
+class Français extends Langue {
+public String salutation()
+{return "Bonjour";}
+}
+
+--> Code corrigé, utilisation du polymorphisme pour la langue : donc pas d'ajout de code par des conditions (mais l'utilisation du new peut créer des dépendances...)
+
+Les new sont un problème car ils permettent la création d'instance : un new ne peut être polymorphe car l'objet à instancier n'existe pas encore (un new unique ne fait RIEN -> on doit instancier !)
+
+On dispose de plusieurs moyens pour résoudre le problème des new :
+
+- Injection de dépendance -> fournit les instances depuis une interface (utilisation d'une interface en paramètres)
+public Client(){ this.service = new service();}
+--> public Client(IService service){ this.service = service;}
+---> Dépendance parée
+
+-->Designs pattern
+- Factory
+- Abstract factory
+- Prototype
+- Factory method (complexe)
+
+Le factory pattern
+
+--> Permet de retourner une des possibles classes qui partagent une superclasse / interface
+--> La classe est D'ABORD instanciée puis retournée et est prête à être utilisée (pas de new direct)
+--> Dépendre d'une interface "factory" et non d'une IMPLÉMENTATION
+Utilité :
+
+--> Lorsqu'on ne sait pas à l'avance la classe à utiliser (d'où l'utilisation d'une interface/classe abstraite)
+--> Lorsque toutes les classes potentielles à être utilisées se trouvent dans la même hiérarchie de sous-classes
+--> Centraliser l'utilisation d'une classe (pas de conditions redondantes dans la classe qui doit instancier une classe)
+--> Cacher toutes les classes potentiellement utilisables
+--> Encapsuler la création d'objets
+
+
+Entreprise ----> service1
+       	   -ou-> service2 (faux)
+
+
+Avec factory
+
+Entreprise ----> IServiceFactory ---> service (abstraite)
+                 implémentation  -->service1
+		 ServiceFactory	 -->service2
+(mettre en place un système de délégation pour la création
+d'une instance, cela se fait depuis la factory)
+
+
+
+code :
+class Entreprise{
+IServiceFactory fabrique;
+public void utiliserFabrique(IServiceFactory f)
+{ this.fabrique = f; //encapsulation pas d'instanciation}
+

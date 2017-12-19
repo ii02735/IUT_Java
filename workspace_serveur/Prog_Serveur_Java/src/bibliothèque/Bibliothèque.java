@@ -4,17 +4,46 @@ import java.util.ArrayList;
 
 public class Bibliothèque {
 	
-	public static ArrayList<Abonne> abonnés;
-	public static ArrayList<Document> documents;
-	private static Bibliothèque _singleton;
-	private Bibliothèque()
+	private static ArrayList<Abonne> abonnes  = new ArrayList<>();
+	private static ArrayList<Document> documents = new ArrayList<>(); 
+	
+	public static boolean identifier(Abonne a)
 	{
-		documents = new ArrayList<>();
+		boolean résultat = false;
+		for(Abonne identifier:abonnes)
+		{
+			if(identifier.getNuméro() == a.getNuméro())
+			{
+				résultat = true;
+				break;
+			}
+		}
+		
+		return résultat;
 	}
-	public static synchronized Bibliothèque getInstance()
+	
+	public static void ajouterDocuments(Document d)
 	{
-		if(_singleton == null)
-			_singleton = new Bibliothèque();
-		return _singleton;
+		Bibliothèque.documents.add(d);
+	}
+	
+	public static void ajouterAbonne(String numéro)
+	{
+		Bibliothèque.abonnes.add(new Abonne(numéro));
+	}
+	
+	public static Abonne getAbonné(int index)
+	{
+		return Bibliothèque.abonnes.get(index);
+	}
+	
+	public static Document getDocument(int index)
+	{
+		return Bibliothèque.documents.get(index);
+	}
+	
+	public static ArrayList<Document> getListeDoc()
+	{
+		return Bibliothèque.documents;
 	}
 }

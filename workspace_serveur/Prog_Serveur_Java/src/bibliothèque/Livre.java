@@ -1,14 +1,16 @@
 package bibliothèque;
+
+import exception.PasLibreException;
+
 public class Livre implements Document {
 	
 	private int numéro;
-	private String réservéPar;
-	private String empruntéPar;
+	private Statut statut;
 	public Livre(int numéro)
 	{
 		this.numéro = numéro;
-		this.réservéPar = null;
-		this.empruntéPar = null;
+		this.statut = Statut.libre;
+
 	}
 	
 	@Override
@@ -20,16 +22,14 @@ public class Livre implements Document {
 	@Override
 	public void reserver(Abonne ab) throws PasLibreException {
 		// TODO Auto-generated method stub
-		if(!Bibliothèque.identifier(ab))
-			throw new PasLibreException("Numéro identifiant " +ab.getNuméro()+" non répertorié");
-		else if(this.réservéPar != null)
-				throw new PasLibreException("Le livre " +this.numéro+ " a déjà été réservé par l'abonné " +this.réservéPar);
-		else if(this.empruntéPar != null)
-			throw new PasLibreException("Le livre " + this.numéro + " ne peut être réservé car il est emprunté par l'abonné " + this.empruntéPar);
-		else
+		switch(this.statut)
 		{
-			this.réservéPar = ab.getNuméro();
-			System.out.println("Le livre " +ab.getNuméro()+ " a été réservé par l'abonné "+ab.getNuméro()+".\nLa durée de réservation est de 2h.");
+			case réservé:
+				throw new PasLibreException("Le document "+this.numéro+" a déjà été réservé");
+			case emprunté:
+				throw new PasLibreException("Le document "+this.numéro+" a été emprunté");
+			case libre:
+				System.out.println("Le document " + this.numéro + " a été réservé par l'abonné " + ab.getNuméro());
 		}
 
 	}
@@ -37,16 +37,14 @@ public class Livre implements Document {
 	@Override
 	public void emprunter(Abonne ab) throws PasLibreException {
 		// TODO Auto-generated method stub
-		if(!Bibliothèque.identifier(ab))
-			throw new PasLibreException("Numéro identifiant " +ab.getNuméro()+" non répertorié");
-		else if(this.réservéPar != null && this.réservéPar != ab.getNuméro())
-			throw new PasLibreException("Le livre " + this.numéro + " a été réservé à l'abonné " + this.réservéPar);
-		else if(this.empruntéPar != null)
-			throw new PasLibreException("Le livre " + this.numéro + " a déjà été emprunté à l'abonné " + this.empruntéPar);
-		else
+		switch(this.statut)
 		{
-			this.empruntéPar = ab.getNuméro();
-			System.out.println("Le livre " + this.numéro + " a été emprunté par l'abonné " + this.empruntéPar);
+			case réservé:
+				throw new PasLibreException("Le document "+this.numéro+" a été réservé.");
+			case emprunté:
+				throw new PasLibreException("Le document "+this.numéro+" est déjà sous emprunt.");
+			case libre:
+				System.out.println("Le document " + this.numéro + " a été emprunté par l'abonné " + ab.getNuméro());
 		}
 		
 
@@ -55,8 +53,7 @@ public class Livre implements Document {
 	@Override
 	public void retour() {
 		// TODO Auto-generated method stub
-		this.empruntéPar = null;
-		this.réservéPar = null;
+		
 	}
 
 }

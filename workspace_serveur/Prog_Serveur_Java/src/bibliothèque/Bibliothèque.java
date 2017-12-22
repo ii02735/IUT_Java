@@ -7,12 +7,28 @@ public class Bibliothèque {
 	private static ArrayList<Abonne> abonnes  = new ArrayList<>();
 	private static ArrayList<Document> documents = new ArrayList<>(); 
 	
-	public static boolean identifier(Abonne a)
+	//à supprimer --> vérifier si geAbonné = null
+	public static boolean identifierAbonne(int num)
 	{
 		boolean résultat = false;
 		for(Abonne identifier:abonnes)
 		{
-			if(identifier.getNuméro() == a.getNuméro())
+			if(identifier.getNuméro() == num)
+			{
+				résultat = true;
+				break;
+			}
+		}
+		
+		return résultat;
+	}
+	//à supprimer --> vérifier si getDocument = null
+	public static boolean identifierDoc(int num)
+	{
+		boolean résultat = false;
+		for(Document identifier:documents)
+		{
+			if(identifier.numero() == num)
 			{
 				résultat = true;
 				break;
@@ -27,20 +43,41 @@ public class Bibliothèque {
 		Bibliothèque.documents.add(d);
 	}
 	
-	public static void ajouterAbonne(String numéro)
+	public static void ajouterAbonne(int numéro)
 	{
 		Bibliothèque.abonnes.add(new Abonne(numéro));
 	}
 	
-	public static Abonne getAbonné(int index)
+	public static Abonne getAbonné(int num)
 	{
-		return Bibliothèque.abonnes.get(index);
+		Abonne resultat = null;
+		for(Abonne identifier:Bibliothèque.abonnes)
+		{
+			if(identifier.getNuméro() == num)
+			{
+				resultat = identifier;
+				break;
+			}
+		}
+		
+		return resultat;
 	}
 	
-	public static Document getDocument(int index)
+	public static Document getDocument(int num)
 	{
-		return Bibliothèque.documents.get(index);
+		Document resultat = null;
+		for(Document identifier:Bibliothèque.documents)
+		{
+			if(identifier.numero() == num)
+			{
+				resultat = identifier;
+				break;
+			}
+		}
+		
+		return resultat;
 	}
+	
 	
 	public static ArrayList<Document> getListeDoc()
 	{

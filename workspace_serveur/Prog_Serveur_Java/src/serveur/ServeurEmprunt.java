@@ -1,27 +1,20 @@
-package serveurs;
+package serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 import service.ServiceEmprunt;
 
-public class ServeurEmprunt implements Runnable{
+public class ServeurEmprunt extends Serveur implements Runnable{
 	
-	public final static int PORT = 2600;
 	private ServerSocket serveur;
-	public ServeurEmprunt() throws IOException {
-		try
-		{
-			System.out.println("Lancement du serveur d'emprunt...");
-			this.serveur = new ServerSocket(PORT);
-		}catch(UnknownHostException e)
-		{
-			System.out.println("Échec du lancement du serveur d'emprunt");
-		}
-		
-		// TODO Auto-generated constructor stub
+	
+	public ServeurEmprunt()
+	{
+		super(PORT.EMPRUNT);
+		this.serveur = super.getServ();
+		System.out.println("Demarrage du serveur d'emprunt");
 	}
 
 	@Override
@@ -31,14 +24,15 @@ public class ServeurEmprunt implements Runnable{
 		{
 			while(true)
 			{
-				Socket socket_serveur = this.serveur.accept();
-				System.out.println("Service d'emprunt lancé");
-				new Thread(new ServiceEmprunt(socket_serveur)).start();
+				Socket serveurEmpruntAttente = this.serveur.accept();
+				System.out.println("Serveur emprunt : Utilisateur connectÃ©");
+				new Thread(new ServiceEmprunt(serveurEmpruntAttente)).start();
 			}
-		}catch(IOException e)
+		}
+		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
+		
 	}
-
 }

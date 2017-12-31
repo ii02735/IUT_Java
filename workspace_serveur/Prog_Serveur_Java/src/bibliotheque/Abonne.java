@@ -1,43 +1,16 @@
-package bibliothèque;
-
-import java.util.ArrayList;
-import java.util.List;
+package bibliotheque;
 
 public class Abonne {
 	
-	private int numéro;
-	private List<Document> réservés;
-	private List<Document> emprunts;
-	public Abonne(int numéro)
+	private int numero;
+	
+	public Abonne(int numero)
 	{
-		this.réservés = new ArrayList<>();
-		this.emprunts = new ArrayList<>();
-		this.numéro = numéro;
+		this.numero = numero;
 	}
 	
-	public int getNuméro()
+	public int getNumero()
 	{
-		return this.numéro;
+		return this.numero;
 	}
-	
-	public void ajouterEmprunt(Document d)
-	{
-		this.emprunts.add(d);
-	}
-	
-	public void enleverEmprunt(Document d)
-	{
-		this.emprunts.remove(d);
-	}
-	
-	public void réservés(Document d)
-	{
-		this.réservés.add(d);
-	}
-	
-	public void enleverRéservé(Document d)
-	{
-		this.réservés.remove(d);
-	}
-	
 }

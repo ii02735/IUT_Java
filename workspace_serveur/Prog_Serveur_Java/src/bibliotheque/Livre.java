@@ -1,59 +1,75 @@
-package bibliothèque;
+package bibliotheque;
 
-import exception.PasLibreException;
 
-public class Livre implements Document {
+public class Livre implements Document{
 	
-	private int numéro;
+	private int reservataire;
+	private int numero;
 	private Statut statut;
-	public Livre(int numéro)
+	public Livre(int numero)
 	{
-		this.numéro = numéro;
+		this.numero = numero;
 		this.statut = Statut.libre;
-
 	}
-	
+
 	@Override
 	public int numero() {
 		// TODO Auto-generated method stub
-		return this.numéro;
+		return this.numero;
 	}
 
 	@Override
-	public void reserver(Abonne ab) throws PasLibreException {
+	public synchronized void reserver(Abonne ab) throws PasLibreException {
 		// TODO Auto-generated method stub
 		switch(this.statut)
 		{
-			case réservé:
-				throw new PasLibreException("Le document "+this.numéro+" a déjà été réservé");
-			case emprunté:
-				throw new PasLibreException("Le document "+this.numéro+" a été emprunté");
+			case reserve:
+					throw new PasLibreException("Le document " + this.numero + " a deja ete reserve");
+			case emprunte:
+				if(this.reservataire == ab.getNumero())
+				{
+					System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
+					this.statut = Statut.emprunte;
+					break;
+				}
+				else
+				throw new PasLibreException("Le document " + this.numero + " a ete emprunte");
 			case libre:
-				System.out.println("Le document " + this.numéro + " a été réservé par l'abonné " + ab.getNuméro());
+				System.out.println("Le document " + this.numero + " a ete reserve par l'abonne " + ab.getNumero());
+				this.statut = Statut.reserve;
+				this.reservataire = ab.getNumero();
+				break;
 		}
-
 	}
-
+	
+	public int getReservataire()
+	{
+		return this.reservataire;
+		
+	}
+	
 	@Override
-	public void emprunter(Abonne ab) throws PasLibreException {
+	public synchronized void emprunter(Abonne ab) throws PasLibreException {
 		// TODO Auto-generated method stub
+
 		switch(this.statut)
 		{
-			case réservé:
-				throw new PasLibreException("Le document "+this.numéro+" a été réservé.");
-			case emprunté:
-				throw new PasLibreException("Le document "+this.numéro+" est déjà sous emprunt.");
+			case reserve:
+				throw new PasLibreException("Le document " + this.numero + " a ete reserve");
+			case emprunte:
+				throw new PasLibreException("Le document " + this.numero + " est deja sous emprunt");
 			case libre:
-				System.out.println("Le document " + this.numéro + " a été emprunté par l'abonné " + ab.getNuméro());
+				System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
+				this.statut = Statut.emprunte;
+				break;
 		}
-		
-
 	}
 
 	@Override
-	public void retour() {
+	public synchronized void retour() {
 		// TODO Auto-generated method stub
-		
+		this.statut = Statut.libre;
 	}
-
+	
+	
 }

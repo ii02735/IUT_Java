@@ -1,5 +1,5 @@
-package bibliothèque;
+package bibliotheque;
 
 public enum Statut {
-	libre,réservé,emprunté;
+	libre,reserve,emprunte;
 }

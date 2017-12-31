@@ -1,4 +1,4 @@
-package bibliothèque;
+package bibliotheque;
 
 @SuppressWarnings("serial")
 public class PasLibreException extends Exception{

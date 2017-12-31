@@ -1,10 +1,8 @@
-package bibliothèque;
-
-import exception.PasLibreException;
+package bibliotheque;
 
 public interface Document {
 	int numero();
-	void reserver(Abonne ab) throws PasLibreException ;
-	void emprunter(Abonne ab) throws PasLibreException;
-	void retour(); // document rendu ou annulation réservation
+	void reserver(Abonne ab)throws PasLibreException;
+	void emprunter(Abonne ab)throws PasLibreException;
+	void retour();// document rendu on annulation reservation
 }

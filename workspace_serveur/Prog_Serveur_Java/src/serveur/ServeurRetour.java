@@ -1,27 +1,19 @@
-package serveurs;
+package serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
-import service.ServiceEmprunt;
+import service.ServiceRetour;
 
-public class ServeurRetour implements Runnable{
+public class ServeurRetour extends Serveur implements Runnable{
 	
-	public final static int PORT = 2700;
 	private ServerSocket serveur;
-	public ServeurRetour(int port) throws IOException {
-		try
-		{
-			System.out.println("Lancement du serveur d'emprunt...");
-			this.serveur = new ServerSocket(PORT);
-		}catch(UnknownHostException e)
-		{
-			System.out.println("Échec du lancement du serveur d'emprunt");
-		}
-		
-		// TODO Auto-generated constructor stub
+	
+	public ServeurRetour() throws IOException {
+		super(PORT.RETOUR);
+		this.serveur = super.getServ();
+		System.out.println("Demarrage du serveur de retour");
 	}
 
 	
@@ -33,10 +25,11 @@ public class ServeurRetour implements Runnable{
 			while(true)
 			{
 				Socket socket_serveur = this.serveur.accept();
-				System.out.println("Service de retour lancé");
-				new Thread(new ServiceEmprunt(socket_serveur)).start();
+				System.out.println("Service de retour lancÃ©");
+				new Thread(new ServiceRetour(socket_serveur)).start();
 			}
-		}catch(IOException e)
+		}
+		catch(IOException e)
 		{
 			e.printStackTrace();
 		}

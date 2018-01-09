@@ -14,6 +14,8 @@ public class ServeurFactory implements IServeurFactory{
 				return new ServeurEmprunt();
 			case "Reservation":
 				return new ServeurReservation();
+			case "Retour":
+				return new ServeurRetour();
 			default:
 				throw new IOException("Unknown server");
 		}

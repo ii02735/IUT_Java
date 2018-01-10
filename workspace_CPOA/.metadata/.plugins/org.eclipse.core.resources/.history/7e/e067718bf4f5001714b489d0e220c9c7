@@ -1,0 +1,40 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import bridge.ICalcul;
+import bridge.Maison;
+import calcul.CalculTaxe;
+
+public class VoitureTest {
+	
+	ICalcul taxe;
+	Maison v1;
+	Maison v2;
+	
+	@Before
+	public void init()
+	{
+		this.taxe = new CalculTaxe();
+		v1 = new Maison(100,1500);
+		v2 = new Maison(60,900);
+	}
+	
+	@Test
+	public void test() {
+		
+		v1.setCalcul(taxe);
+		assertEquals(3000, v1.getTaxe());
+	}
+	
+	@Test
+	public void testValLocative(){
+		
+		v2.setCalcul(taxe);
+		v2.getTaxe();
+		assertEquals(0,v2.getTaxe());
+	}
+}

@@ -1,0 +1,7 @@
+
+public interface Actions {
+	
+	void payer();
+	void rembourser();
+	void 
+}

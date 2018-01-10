@@ -1,0 +1,29 @@
+package état;
+
+import appli.Commande;
+import appli.État;
+
+public class Payée implements État{
+
+	@Override
+	public État payer(Commande c) throws Exception{
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande payée ne peut être payée une seconde fois");
+		
+	}
+
+	@Override
+	public État rembourser(Commande c) throws Exception{
+		// TODO Auto-generated method stub
+		return new NonPayée();
+		
+	}
+
+	@Override
+	public État livrer(Commande c) throws Exception{
+		// TODO Auto-generated method stub
+		return new Livrée();
+		
+	}
+
+}

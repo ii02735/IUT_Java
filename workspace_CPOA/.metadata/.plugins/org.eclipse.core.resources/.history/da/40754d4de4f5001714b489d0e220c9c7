@@ -1,0 +1,8 @@
+package appli;
+
+public interface État {
+	
+	État payer(Commande c) throws Exception;
+	État rembourser(Commande c) throws Exception;
+	État livrer(Commande c) throws Exception;
+}

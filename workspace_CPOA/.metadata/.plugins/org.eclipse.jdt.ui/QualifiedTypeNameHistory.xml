@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="appli.Actions"/>
+<fullyQualifiedTypeName name="appli.État"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="appli.Commande"/>
+<fullyQualifiedTypeName name="état.Créée"/>
+<fullyQualifiedTypeName name="exceptions.CasException"/>
+<fullyQualifiedTypeName name="composite.Groupement"/>
+<fullyQualifiedTypeName name="bridge.Maison"/>
+<fullyQualifiedTypeName name="formules.CalculTaxe"/>
+<fullyQualifiedTypeName name="bridge.ICalcul"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="calcul.CalculTaxe"/>
+</qualifiedTypeNameHistroy>

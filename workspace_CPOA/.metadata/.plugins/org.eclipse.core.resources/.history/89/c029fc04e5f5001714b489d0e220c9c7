@@ -1,0 +1,35 @@
+package appli;
+import java.util.Date;
+
+public class Commande {
+	
+	private int numero;
+	private Date dateLiv = null;
+	private …tat Ètats;
+	
+	public Commande(int numero, …tat e)
+	{
+		this.numero = numero;
+		this.Ètats = e;
+	}
+	
+	public void livrer() throws Exception
+	{
+		
+	}
+	
+	public void payer() throws Exception
+	{
+		
+	}
+	
+	public void rembourser() throws Exception
+	{
+		
+	}
+	
+	public void set…tat(…tat e)
+	{
+		this.Ètats = e;
+	}
+}

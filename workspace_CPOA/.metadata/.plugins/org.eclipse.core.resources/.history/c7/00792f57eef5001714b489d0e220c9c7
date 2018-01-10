@@ -1,0 +1,7 @@
+package composite;
+
+public interface Groupement {
+	
+	void ajouter(Groupement g);
+	int getMasseSalariale();
+}

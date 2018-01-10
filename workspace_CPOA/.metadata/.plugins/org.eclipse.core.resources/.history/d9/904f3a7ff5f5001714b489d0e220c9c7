@@ -1,0 +1,34 @@
+package bridge;
+
+public class Maison {
+	
+	private int surface;
+	private int valeurLocative;
+	private ICalcul calcul;
+	
+	public Maison(int surface, int valeurLocative, ICalcul calcul) {
+		this.valeurLocative = valeurLocative;
+		this.surface = surface;
+		this.calcul = calcul;
+	}
+	
+	public void setCalcul(ICalcul calcul)
+	{
+		this.calcul = calcul;
+	}
+	
+	public int getTaxe () {
+		return valeurLocative * 2;
+	}
+	public int getValeurLocative() {
+		return valeurLocative;
+	}
+	public int getSurface() {
+		return surface;
+	}
+	
+	public int getMontant()
+	{
+		return calcul.getCout(this);
+	}
+}

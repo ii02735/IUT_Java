@@ -1,0 +1,8 @@
+package appli;
+
+public interface Actions {
+	
+	void payer() throws Exception;
+	void rembourser() throws Exception;
+	void livrer() throws Exception;
+}

@@ -1,0 +1,26 @@
+package état;
+
+import appli.Commande;
+import appli.État;
+
+public class NonPayée implements État{
+
+	@Override
+	public État payer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public État rembourser(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public État livrer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

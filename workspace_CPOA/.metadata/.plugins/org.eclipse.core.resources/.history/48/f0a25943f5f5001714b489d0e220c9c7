@@ -1,0 +1,15 @@
+package calcul;
+
+import bridge.ICalcul;
+import bridge.Maison;
+
+public class CalculTaxe implements ICalcul{
+
+	@Override
+	public int getCout(Maison m) {
+		// TODO Auto-generated method stub
+			
+			return 0;
+	}
+
+}

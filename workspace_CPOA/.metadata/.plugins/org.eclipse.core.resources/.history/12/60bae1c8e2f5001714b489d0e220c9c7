@@ -1,0 +1,7 @@
+
+public interface État {
+	
+	void payer();
+	void rembourser();
+	void 
+}

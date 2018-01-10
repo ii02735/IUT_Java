@@ -1,0 +1,25 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import appli.Commande;
+
+public class TestState {
+	
+	Commande c;
+	
+	@Before
+	public void initCommande()
+	{
+		this.c = new Commande(32);
+	}
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

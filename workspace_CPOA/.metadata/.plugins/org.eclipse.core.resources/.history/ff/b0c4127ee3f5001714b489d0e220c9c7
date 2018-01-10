@@ -1,0 +1,25 @@
+package état;
+
+import appli.Actions;
+
+public class Payée implements Actions{
+
+	@Override
+	public void payer() throws Exception{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rembourser() throws Exception{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void livrer() throws Exception{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

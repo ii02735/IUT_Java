@@ -1,0 +1,13 @@
+package appli;
+import java.util.Date;
+
+public class Commande {
+	
+	private int numero;
+	private Date dateLiv = null;
+	
+	public Commande(int numero)
+	{
+		this.numero = numero;
+	}
+}

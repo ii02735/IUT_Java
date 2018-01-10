@@ -1,0 +1,13 @@
+package taxe;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class VoitureTest {
+	@Test
+	public void test() {
+		Maison v1 = new Maison(100,  1500);
+		assertEquals(3000, v1.getTaxe());
+	}
+}

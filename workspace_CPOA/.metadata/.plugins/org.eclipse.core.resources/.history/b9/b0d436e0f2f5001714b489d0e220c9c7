@@ -1,0 +1,16 @@
+package formules;
+
+import bridge.ICalcul;
+import bridge.Maison;
+
+public class CalculValLocative implements ICalcul{
+
+	@Override
+	public int getCout(Maison m) {
+		// TODO Auto-generated method stub
+
+		else
+			return m.get
+	}
+	
+}

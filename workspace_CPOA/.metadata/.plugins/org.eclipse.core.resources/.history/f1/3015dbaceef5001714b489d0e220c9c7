@@ -1,0 +1,20 @@
+﻿package paye;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import composite.Entreprise;
+
+public class TestEntreprise {
+	@Test
+	public void test() {
+		Entreprise e1 = new Entreprise();
+		e1.ajouter(new Salarié(1500));
+		e1.ajouter(new Salarié(2000));
+		assertEquals(3500, e1.getSalaire());
+		Entreprise e2 = new Entreprise();
+		e2.ajouter(new Salarié(2000));
+		assertEquals(2000, e2.getSalaire());
+	}
+}

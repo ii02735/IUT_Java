@@ -1,5 +1,0 @@
-package gérantMessages;
-
-public interface IFormat {
-
-}

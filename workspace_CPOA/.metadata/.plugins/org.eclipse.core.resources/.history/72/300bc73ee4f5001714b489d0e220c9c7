@@ -1,0 +1,25 @@
+package état;
+
+import appli.État;
+
+public class NonPayée implements État{
+
+	@Override
+	public État payer() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public État rembourser() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public État livrer() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

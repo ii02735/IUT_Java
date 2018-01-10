@@ -1,8 +1,0 @@
-package fileSystem;
-
-public class File {
-   public File( String name ) { this.name = name; }
-   public String display(String path){ return (path+name); }//println --> attention
-   public void ls() { display(""); }
-   private String name;
-}

@@ -1,0 +1,19 @@
+﻿package composite;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import paye.Salarié;
+
+public class Entreprise {
+	private List<Salarié> salariés = new ArrayList<>();
+	public void ajouter(Salarié s) { 
+		salariés.add(s); 
+	}
+	public int getSalaire() {
+		int total = 0;
+		for(Salarié s : salariés)
+			total += s.getSalaire();
+		return total;
+	}
+}

@@ -1,0 +1,7 @@
+﻿package paye;
+
+public class Salarié {
+	private int salaire;
+	public Salarié( int salaire ) { this.salaire = salaire; }
+	public int getSalaire() { return salaire;}
+}

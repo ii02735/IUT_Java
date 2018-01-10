@@ -1,0 +1,8 @@
+package appli;
+
+public interface Actions {
+	
+	État payer() throws Exception;
+	État rembourser() throws Exception;
+	État livrer() throws Exception;
+}

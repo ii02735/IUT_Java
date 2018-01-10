@@ -1,0 +1,29 @@
+package état;
+
+import appli.Commande;
+import appli.État;
+
+public class Livrée implements État{
+
+	@Override
+	public void payer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande livrée ne peut être payée");
+		
+	}
+
+	@Override
+	public void rembourser(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande livrée ne peut être remboursée");
+		
+	}
+
+	@Override
+	public void livrer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande livrée ne peut l'être une seconde fois");
+		
+	}
+
+}

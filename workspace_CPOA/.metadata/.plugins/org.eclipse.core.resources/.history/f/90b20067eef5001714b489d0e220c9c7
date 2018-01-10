@@ -1,0 +1,21 @@
+﻿package paye;
+
+import composite.Groupement;
+
+public class Salarié implements Groupement{
+	private int salaire;
+	public Salarié(int salaire) 
+	{ 
+		this.salaire = salaire; 
+	}
+	@Override
+	public void ajouter(Groupement g) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int getMasseSalariale() {
+		// TODO Auto-generated method stub
+		return salaire;
+	}
+}

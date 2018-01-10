@@ -1,0 +1,29 @@
+package état;
+
+import appli.Commande;
+import appli.État;
+
+public class Créée implements État{
+
+	@Override
+	public void payer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		c.setÉtat(new Payée());
+		
+	}
+
+	@Override
+	public void rembourser(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande ne peut être remboursée sans paiement effectué auparavant");
+		
+	}
+
+	@Override
+	public void livrer(Commande c) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Une commande ne peut être livrée sans paiement");
+		
+	}
+
+}

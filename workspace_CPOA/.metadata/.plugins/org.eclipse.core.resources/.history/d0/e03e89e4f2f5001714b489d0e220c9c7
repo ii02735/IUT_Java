@@ -1,0 +1,19 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import bridge.ICalcul;
+import bridge.Maison;
+import formules.CalculTaxe;
+
+public class VoitureTest {
+	@Test
+	public void test() {
+		ICalcul taxe = new CalculTaxe();
+		Maison v1 = new Maison(100,  1500);
+		v1.setCalcul(taxe);
+		assertEquals(3000, v1.getTaxe());
+	}
+}

@@ -1,0 +1,20 @@
+﻿package composite;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import paye.Salarié;
+
+public class Entreprise {
+	private List<Groupement> cas = new ArrayList<>();
+	
+	public void ajouter(Groupement s) { 
+		cas.add(s); 
+	}
+	public int getSalaire() {
+		int total = 0;
+		for(Groupement g : cas)
+			total += g.getMasseSalariale();
+		return total;
+	}
+}

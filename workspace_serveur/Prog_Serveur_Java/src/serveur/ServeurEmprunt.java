@@ -25,7 +25,7 @@ public class ServeurEmprunt extends Serveur implements Runnable{
 			while(true)
 			{
 				Socket serveurEmpruntAttente = this.serveur.accept();
-				System.out.println("Serveur emprunt : Utilisateur connectÃ©");
+				System.out.println("Serveur emprunt : Utilisateur connecté");
 				new Thread(new ServiceEmprunt(serveurEmpruntAttente)).start();
 			}
 		}

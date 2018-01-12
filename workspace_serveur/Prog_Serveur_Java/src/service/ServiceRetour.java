@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import bibliotheque.Bibliotheque;
-import bibliotheque.PasLibreException;
+import exceptions.PasLibreException;
 
 public class ServiceRetour implements Runnable {
 
@@ -32,9 +32,9 @@ public class ServiceRetour implements Runnable {
 		try
 		{
 			int numero = 0;
-			System.out.println("Service retour : Utilisateur connectÃ©");
+			System.out.println("Service retour : Utilisateur connecté");
 			out.println("read");
-			out.println("Vous Ãªtes sur le service de retour");	
+			out.println("Vous êtes sur le service de retour");	
 			
 			out.println("read");
 			out.println("Saisir le numero du document a rendre");
@@ -44,13 +44,13 @@ public class ServiceRetour implements Runnable {
 			
 			Bibliotheque.getDocument(numero).retour();
 			out.println("read");
-			out.println("retour rÃ©ussi");
+			out.println("Retour réussi");
 			out.println("quitter");
-			System.err.println("Service retour : Utilisateur dÃ©connectÃ©");
+			System.err.println("Service retour : Utilisateur déconnecté");
 		}
 		catch(PasLibreException | NumberFormatException | IOException e)
 		{
-			System.err.println("Service retour : Utilisateur dÃ©connectÃ©");
+			System.err.println("Service retour : Utilisateur déconnecté");
 			out.println("Exception");
 			out.println(e.toString());
 		}

@@ -21,6 +21,7 @@ public class Application {
 		try {
 			new Thread(factory.creerServeur("Emprunt")).start();
 			new Thread(factory.creerServeur("Reservation")).start();
+			new Thread(factory.creerServeur("Retour")).start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

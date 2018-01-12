@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import bibliotheque.Abonne;
 import bibliotheque.Bibliotheque;
 import bibliotheque.Document;
-import bibliotheque.PasLibreException;
+import exceptions.PasLibreException;
 
 public class ServiceReservation implements Runnable{
 	
@@ -20,14 +18,12 @@ public class ServiceReservation implements Runnable{
 	private BufferedReader convertisseur;
 	private PrintWriter out;
 	private Abonne ab;
-	private Timer temps;
 	private int numAbonne;
 	private int numero;
 	private Document d;
 	public ServiceReservation(Socket serveur)
 	{
 		this.serveur = serveur;
-		this.temps = new Timer();
 		try {
 			this.in = new InputStreamReader(this.serveur.getInputStream());
 			this.convertisseur = new BufferedReader(in);
@@ -46,7 +42,7 @@ public class ServiceReservation implements Runnable{
 			
 
 			out.println("read");
-			out.println("Vous √™tes sur le service de r√©servation");	
+			out.println("Vous Ítes sur le service de rÈservation");	
 			out.println("read");
 			out.println("Saisir le numero d'abonne");
 			out.println("write");
@@ -55,31 +51,23 @@ public class ServiceReservation implements Runnable{
 			ab = Bibliotheque.identifierAbonne(this.numAbonne);
 			
 			out.println("read");
-			out.println("Saisir le numero du document a r√©server");
+			out.println("Saisir le numero du document a rÈserver");
 			out.println("write");
 			
 			this.numero = Integer.parseInt(convertisseur.readLine());
 			this.d = Bibliotheque.getDocument(this.numero);
 			this.d.reserver(ab);
 			out.println("read");
-			out.println("Vous avez 10s avant la fin de la r√©servation");
-			temps.schedule(new TimerTask() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					System.out.println("Le d√©lai de r√©servation sur le document " + ServiceReservation.this.numero + " a expir√©");
-					ServiceReservation.this.d.retour();
-				}
-			}, 10000);
+			out.println("Vous avez 2h avant la fin de la rÈservation");
+			
 			out.println("read");
-			out.println("R√©servation r√©ussie");
+			out.println("RÈservation rÈussie");
 			out.println("quitter");
-			System.err.println("Service r√©servation : Utilisateur d√©connect√©");
+			System.err.println("Service rÈservation : Utilisateur dÈconnectÈ");
 		}
 		catch(PasLibreException | NumberFormatException | IOException e)
 		{
-			System.err.println("Service r√©servation : Utilisateur d√©connect√©");
+			System.err.println("Service rÈservation : Utilisateur dÈconnectÈ");
 			out.println("Exception");
 			out.println(e.toString());
 		}

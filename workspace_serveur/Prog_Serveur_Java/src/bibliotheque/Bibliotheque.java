@@ -2,6 +2,8 @@ package bibliotheque;
 
 import java.util.ArrayList;
 
+import exceptions.PasLibreException;
+
 public class Bibliotheque {
 	
 	private static ArrayList<Abonne> abonnes = new ArrayList<>();

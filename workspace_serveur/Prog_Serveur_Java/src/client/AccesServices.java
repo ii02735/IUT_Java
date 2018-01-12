@@ -13,7 +13,7 @@ public class AccesServices implements Runnable{
 		// TODO Auto-generated method stub
 		
 			try {
-				System.out.println("\nChoisir le service Ã  lancer.");
+				System.out.println("\nChoisir le service à lancer.");
 				System.out.println("- Emprunt\n- Reservation\n- Retour\n- Fermer");
 				BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 				String service;
@@ -29,8 +29,9 @@ public class AccesServices implements Runnable{
 							break;
 						case "Retour":
 							new Thread(new InputOutput("127.0.1.1", PORT.RETOUR)).start();
+							break;
 						default:
-							System.err.println("Service non rÃ©pertoriÃ©");
+							System.err.println("Service non répertorié");
 							break;
 					}
 			} catch (IOException e) {

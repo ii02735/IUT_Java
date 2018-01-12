@@ -24,7 +24,7 @@ public class ServeurReservation extends Serveur implements Runnable{
 			while(true)
 			{
 			Socket serveurAttente = this.serveur.accept();
-			System.out.println("Service rÃ©servation : Utilisateur connectÃ©");
+			System.out.println("Service réservation : Utilisateur connecté");
 			new Thread(new ServiceReservation(serveurAttente)).start();
 			}
 		}

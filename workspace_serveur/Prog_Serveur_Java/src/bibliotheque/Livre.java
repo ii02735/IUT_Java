@@ -7,16 +7,22 @@ import exceptions.PasLibreException;
 
 
 public class Livre implements Document{
+	// temps en ms
+	private final int tempsEmpruntMax = 10000;
+	private final int tempsReservation = 7200 * 1000; // 7200s correspond à 2 heures
 	
-	private int reservataire;
+	private Abonne reservataire;
 	private int numero;
 	private Statut statut;
 	private Timer temps;
+	private Abonne emprunteur;
+	
 	public Livre(int numero)
 	{
 		this.temps = new Timer();
 		this.numero = numero;
 		this.statut = Statut.libre;
+		emprunteur = null;
 	}
 
 	@Override
@@ -39,22 +45,22 @@ public class Livre implements Document{
 				case libre:
 					System.out.println("Le document " + this.numero + " a ete reserve par l'abonne " + ab.getNumero());
 					this.statut = Statut.reserve;
-					this.reservataire = ab.getNumero();
+					this.reservataire = ab;
 					temps.schedule(new TimerTask() {
 						
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
 							System.out.println("Le délai de réservation sur le document " + Livre.this.numero + " a expiré");
-							Livre.this.retour();
+							Livre.this.retour(false);
 						}
-					}, 7200 * 1000); // 7200s correspond à 2 heures
+					}, this.tempsReservation); 
 					break;
 			}
 		}
 	}
 	
-	public int getReservataire()
+	public Abonne getReservataire()
 	{
 		return this.reservataire;
 		
@@ -69,11 +75,20 @@ public class Livre implements Document{
 			switch(this.statut)
 			{
 				case reserve:
-					if(this.reservataire == ab.getNumero())
+					if(this.reservataire == ab)
 					{
 						System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
 						this.statut = Statut.emprunte;
-						this.temps.cancel();
+						this.emprunteur = ab;
+						this.temps.cancel();//Si un timer de temps de réservation est actif
+						temps.schedule(new TimerTask() {
+							
+							@Override
+							public void run() {
+								Livre.this.emprunteur.setEstBanni(true);
+								
+							}
+						}, tempsEmpruntMax);
 						break;
 					}
 					else
@@ -83,6 +98,15 @@ public class Livre implements Document{
 				case libre:
 					System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
 					this.statut = Statut.emprunte;
+					this.emprunteur = ab;
+					temps.schedule(new TimerTask() {
+						
+						@Override
+						public void run() {
+							Bibliotheque.bannir(emprunteur);
+							
+						}
+					}, tempsEmpruntMax);
 					break;
 			}
 		}
@@ -90,9 +114,11 @@ public class Livre implements Document{
 	
 	
 	@Override
-	public void retour() {
+	public void retour(boolean estAbimé) {
+		if(estAbimé)
+			Bibliotheque.bannir(emprunteur);
 		this.statut = Statut.libre;
+		this.temps.cancel();
 	}
-	
 	
 }

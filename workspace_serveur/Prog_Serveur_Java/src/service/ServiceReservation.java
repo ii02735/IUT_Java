@@ -50,20 +50,20 @@ public class ServiceReservation implements Runnable{
 			
 			ab = Bibliotheque.identifierAbonne(this.numAbonne);
 			
-			out.println("read");
-			out.println("Saisir le numero du document a réserver");
-			out.println("write");
-			
-			this.numero = Integer.parseInt(convertisseur.readLine());
-			this.d = Bibliotheque.getDocument(this.numero);
-			this.d.reserver(ab);
-			out.println("read");
-			out.println("Vous avez 2h avant la fin de la réservation");
-			
-			out.println("read");
-			out.println("Réservation réussie");
-			out.println("quitter");
-			System.err.println("Service réservation : Utilisateur déconnecté");
+				out.println("read");
+				out.println("Saisir le numero du document a réserver");
+				out.println("write");
+				
+				this.numero = Integer.parseInt(convertisseur.readLine());
+				this.d = Bibliotheque.getDocument(this.numero);
+				this.d.reserver(ab);
+				out.println("read");
+				out.println("Vous avez 2h avant la fin de la réservation");
+				
+				out.println("read");
+				out.println("Réservation réussie");
+				out.println("quitter");
+				System.err.println("Service réservation : Utilisateur déconnecté");
 		}
 		catch(PasLibreException | NumberFormatException | IOException e)
 		{

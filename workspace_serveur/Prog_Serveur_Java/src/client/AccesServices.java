@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import exceptions.AccesException;
-import factory_services.AccesServiceFactory;
+import service.AccesServiceFactory;
 
+import exceptions.AccesException;
 
 public class AccesServices implements Runnable{
 

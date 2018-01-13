@@ -1,0 +1,14 @@
+package factory_serveur;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class Serveur {
+	
+	private ServerSocket serveur;
+	
+	public Serveur(int port) throws IOException
+	{
+		this.serveur = new ServerSocket(port);
+	}
+}

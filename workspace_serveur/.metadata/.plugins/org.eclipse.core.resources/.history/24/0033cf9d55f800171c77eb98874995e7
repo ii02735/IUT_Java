@@ -1,0 +1,5 @@
+package factory_serveur;
+
+public class Serveur {
+
+}

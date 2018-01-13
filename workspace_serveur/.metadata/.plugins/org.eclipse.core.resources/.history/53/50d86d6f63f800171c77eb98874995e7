@@ -1,0 +1,24 @@
+package factory_services;
+
+import java.net.Socket;
+
+public abstract class Service implements Runnable{
+	
+	private Socket serveur;
+	public Service (Socket client)
+	{
+		this.serveur = client;
+	}
+	@Override
+	public abstract void run();
+	
+	public void setClient(Socket client)
+	{
+		this.serveur = client;
+	}
+	
+	public Socket getClient()
+	{
+		return this.serveur;
+	}
+}

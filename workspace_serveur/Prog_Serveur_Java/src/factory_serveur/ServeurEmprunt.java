@@ -1,10 +1,12 @@
-package serveur;
+package factory_serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import service.ServiceEmprunt;
+import factory_services.ServiceEmprunt;
+
+import serveur.PORT;
 
 public class ServeurEmprunt extends Serveur implements Runnable{
 	
@@ -25,7 +27,7 @@ public class ServeurEmprunt extends Serveur implements Runnable{
 			while(true)
 			{
 				Socket serveurEmpruntAttente = this.serveur.accept();
-				System.out.println("Serveur emprunt : Utilisateur connecté");
+				System.out.println("Service emprunt : Utilisateur connectÃ©");
 				new Thread(new ServiceEmprunt(serveurEmpruntAttente)).start();
 			}
 		}

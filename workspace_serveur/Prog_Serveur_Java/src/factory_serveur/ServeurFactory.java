@@ -1,6 +1,10 @@
-package serveur;
+package factory_serveur;
 
 import java.io.IOException;
+
+import serveur.IServeurFactory;
+
+
 
 
 public class ServeurFactory implements IServeurFactory{

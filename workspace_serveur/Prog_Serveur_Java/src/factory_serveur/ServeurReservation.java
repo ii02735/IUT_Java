@@ -1,9 +1,12 @@
-package serveur;
+package factory_serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import service.ServiceReservation;
+
+import factory_services.ServiceReservation;
+
+import serveur.PORT;
 
 public class ServeurReservation extends Serveur implements Runnable{
 
@@ -24,7 +27,7 @@ public class ServeurReservation extends Serveur implements Runnable{
 			while(true)
 			{
 			Socket serveurAttente = this.serveur.accept();
-			System.out.println("Service réservation : Utilisateur connecté");
+			System.out.println("Service rÃ©servation : Utilisateur connectÃ©");
 			new Thread(new ServiceReservation(serveurAttente)).start();
 			}
 		}

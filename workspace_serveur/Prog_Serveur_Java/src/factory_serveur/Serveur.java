@@ -1,7 +1,10 @@
-package serveur;
+package factory_serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+
+import serveur.PORT;
+
 
 public class Serveur implements Runnable{
 	

@@ -5,6 +5,6 @@ public class DejaLibreException extends Exception {
 	
 	public String getMessage()
 	{
-		return "Le document n'est pas emprunté";
+		return "Le document n'est pas empruntÃ©";
 	}
 }

@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
 
 public class InputOutput implements Runnable{
 
@@ -27,15 +27,6 @@ public class InputOutput implements Runnable{
 		}
 	}
 	
-	public void setPort(int port)
-	{
-		try {
-			client.bind(new InetSocketAddress(port));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	@Override
 	public void run() {

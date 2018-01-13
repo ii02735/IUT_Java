@@ -8,7 +8,7 @@ import exceptions.PasLibreException;
 
 public class Livre implements Document{
 	
-	private int reservataire;
+	private Abonne reservataire;
 	private int numero;
 	private Statut statut;
 	private Timer temps;
@@ -39,22 +39,22 @@ public class Livre implements Document{
 				case libre:
 					System.out.println("Le document " + this.numero + " a ete reserve par l'abonne " + ab.getNumero());
 					this.statut = Statut.reserve;
-					this.reservataire = ab.getNumero();
+					this.reservataire = ab;
 					temps.schedule(new TimerTask() {
 						
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
-							System.out.println("Le délai de réservation sur le document " + Livre.this.numero + " a expiré");
+							System.out.println("Le dÃ©lai de rÃ©servation sur le document " + Livre.this.numero + " a expirï¿½");
 							Livre.this.retour();
 						}
-					}, 7200 * 1000); // 7200s correspond à 2 heures
+					}, 7200 * 1000); // 7200s correspond Ã  2 heures
 					break;
 			}
 		}
 	}
 	
-	public int getReservataire()
+	public Abonne getReservataire()
 	{
 		return this.reservataire;
 		
@@ -69,7 +69,7 @@ public class Livre implements Document{
 			switch(this.statut)
 			{
 				case reserve:
-					if(this.reservataire == ab.getNumero())
+					if(this.reservataire == ab)
 					{
 						System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
 						this.statut = Statut.emprunte;
@@ -77,7 +77,7 @@ public class Livre implements Document{
 						break;
 					}
 					else
-						throw new PasLibreException("Le document " + this.numero + " est en réservation");
+						throw new PasLibreException("Le document " + this.numero + " est en rï¿½servation");
 				case emprunte:
 					throw new PasLibreException("Le document " + this.numero + " est deja sous emprunt");
 				case libre:

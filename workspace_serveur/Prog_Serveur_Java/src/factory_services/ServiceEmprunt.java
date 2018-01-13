@@ -1,27 +1,23 @@
-package service;
+package factory_services;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
 import bibliotheque.Abonne;
 import bibliotheque.Bibliotheque;
-import bibliotheque.Document;
 import exceptions.PasLibreException;
 
-public class ServiceReservation implements Runnable{
+public class ServiceEmprunt implements Runnable{
 	
 	private Socket serveur;
 	private InputStreamReader in;
 	private BufferedReader convertisseur;
 	private PrintWriter out;
 	private Abonne ab;
-	private int numAbonne;
-	private int numero;
-	private Document d;
-	public ServiceReservation(Socket serveur)
+	
+	public ServiceEmprunt(Socket serveur)
 	{
 		this.serveur = serveur;
 		try {
@@ -39,40 +35,35 @@ public class ServiceReservation implements Runnable{
 		// TODO Auto-generated method stub
 		try
 		{
-			
-
+			int numero = 0;
 			out.println("read");
-			out.println("Vous êtes sur le service de réservation");	
+			out.println("Vous Ãªtes sur le service d'emprunt");	
 			out.println("read");
 			out.println("Saisir le numero d'abonne");
 			out.println("write");
-			this.numAbonne = Integer.parseInt(convertisseur.readLine());
+			numero = Integer.parseInt(convertisseur.readLine());
 			
-			ab = Bibliotheque.identifierAbonne(this.numAbonne);
+			ab = Bibliotheque.identifierAbonne(numero);
 			
 			out.println("read");
-			out.println("Saisir le numero du document a réserver");
+			out.println("Saisir le numero du document a emprunter");
 			out.println("write");
 			
-			this.numero = Integer.parseInt(convertisseur.readLine());
-			this.d = Bibliotheque.getDocument(this.numero);
-			this.d.reserver(ab);
-			out.println("read");
-			out.println("Vous avez 2h avant la fin de la réservation");
+			numero = Integer.parseInt(convertisseur.readLine());
 			
+			Bibliotheque.getDocument(numero).emprunter(ab);
 			out.println("read");
-			out.println("Réservation réussie");
+			out.println("Emprunt rÃ©ussi");
 			out.println("quitter");
-			System.err.println("Service réservation : Utilisateur déconnecté");
+			System.err.println("Service emprunt : Utilisateur dÃ©connectÃ©");
 		}
 		catch(PasLibreException | NumberFormatException | IOException e)
 		{
-			System.err.println("Service réservation : Utilisateur déconnecté");
+			System.err.println("Service emprunt : Utilisateur dÃ©connectÃ©");
 			out.println("Exception");
 			out.println(e.toString());
 		}
 	}
-	
 	
 	@Override
 	protected void finalize() throws Throwable

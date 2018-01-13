@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import exceptions.AccesException;
+import factory_services.AccesServiceFactory;
 
-import serveur.PORT;
 
 public class AccesServices implements Runnable{
 
@@ -13,28 +14,15 @@ public class AccesServices implements Runnable{
 		// TODO Auto-generated method stub
 		
 			try {
-				System.out.println("\nChoisir le service à lancer.");
+				IAccesServicesFactory acces = new AccesServiceFactory();
+				System.out.println("\nChoisir le service Ã  lancer.");
 				System.out.println("- Emprunt\n- Reservation\n- Retour\n- Fermer");
 				BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 				String service;
 				service = input.readLine();
+				new Thread(acces.creerAcces(service)).start();
 
-					switch(service)
-					{
-						case "Emprunt":
-							new Thread(new InputOutput("127.0.1.1", PORT.EMPRUNT)).start();
-							break;
-						case "Reservation":
-							new Thread(new InputOutput("127.0.1.1", PORT.RESERVATION)).start();
-							break;
-						case "Retour":
-							new Thread(new InputOutput("127.0.1.1", PORT.RETOUR)).start();
-							break;
-						default:
-							System.err.println("Service non répertorié");
-							break;
-					}
-			} catch (IOException e) {
+			} catch (IOException | AccesException e) {
 					// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -1,10 +1,12 @@
-package serveur;
+package factory_serveur;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import service.ServiceRetour;
+import factory_services.ServiceRetour;
+
+import serveur.PORT;
 
 public class ServeurRetour extends Serveur implements Runnable{
 	
@@ -25,7 +27,7 @@ public class ServeurRetour extends Serveur implements Runnable{
 			while(true)
 			{
 				Socket socket_serveur = this.serveur.accept();
-				System.out.println("Service de retour lancé");
+				System.out.println("Service de retour lancÃ©");
 				new Thread(new ServiceRetour(socket_serveur)).start();
 			}
 		}

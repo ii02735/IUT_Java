@@ -6,6 +6,7 @@ import java.util.TimerTask;
 public class Abonne {
 	
 	private int numero;
+	private final int DureeBanni = 30 * 24 * 3600; // 1 mois
 	private boolean estBanni;
 	private Timer tempsBanni;
 	public Abonne(int numero)
@@ -26,9 +27,9 @@ public class Abonne {
 				public void run() {
 					// TODO Auto-generated method stub
 					Abonne.this.estBanni = false;
-					System.out.println("temps écoulé");
+					System.out.println("Durée de banissement écoulé pour l'abonné " + Abonne.this.numero);
 				}
-			},10000);
+			},DureeBanni);
 		}
 		
 	}

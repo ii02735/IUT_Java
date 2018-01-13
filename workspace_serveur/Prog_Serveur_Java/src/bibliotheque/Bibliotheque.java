@@ -50,5 +50,9 @@ public class Bibliotheque {
 			return d;
 		throw new PasLibreException("Document inconnu");
 	}
-
+	
+	public static void bannir(Abonne ab)
+	{
+		ab.setEstBanni(true);
+	}
 }

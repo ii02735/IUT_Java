@@ -31,6 +31,8 @@ public class ServiceRetour implements Runnable {
 	public void run() {
 		try
 		{
+			String reponse = "";
+			boolean abime = false;
 			int numero = 0;
 			out.println("read");
 			out.println("Vous êtes sur le service de retour");	
@@ -40,8 +42,18 @@ public class ServiceRetour implements Runnable {
 			out.println("write");
 			
 			numero = Integer.parseInt(convertisseur.readLine());
+			out.println("read");
+			out.println("Avez vous abimé le document ? (oui/non)");
 			
-			Bibliotheque.getDocument(numero).retour();
+			out.println("write");
+			reponse = convertisseur.readLine();
+			if(reponse.compareTo("oui") == 0)
+			{
+				abime = true;
+				out.println("read");
+				out.println("Vous êtes banni pendant 1 mois");
+			}
+			Bibliotheque.getDocument(numero).retour(abime);
 			out.println("read");
 			out.println("Retour réussi");
 			out.println("quitter");

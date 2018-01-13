@@ -1,0 +1,42 @@
+package bibliotheque;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Abonne {
+	
+	private int numero;
+	private boolean estBanni;
+	public Abonne(int numero)
+	{
+		this.estBanni = false;
+		this.numero = numero;
+	}
+	
+	public void setEstBanni(boolean b)
+	{
+		if(b)
+		{
+			this.estBanni = b;
+			new Timer(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					
+				}
+			})
+		}
+		
+	}
+	
+	public boolean getEstBanni()
+	{
+		return this.estBanni;
+	}
+	
+	public int getNumero()
+	{
+		return this.numero;
+	}
+}

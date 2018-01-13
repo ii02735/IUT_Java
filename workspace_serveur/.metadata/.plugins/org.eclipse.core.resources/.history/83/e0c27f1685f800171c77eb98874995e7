@@ -1,0 +1,27 @@
+package bibliotheque;
+
+public class Abonne {
+	
+	private int numero;
+	private boolean estBanni;
+	public Abonne(int numero)
+	{
+		this.estBanni = false;
+		this.numero = numero;
+	}
+	
+	public void setEstBanni(boolean b)
+	{
+		this.estBanni = b;
+	}
+	
+	public boolean getEstBanni()
+	{
+		return this.estBanni;
+	}
+	
+	public int getNumero()
+	{
+		return this.numero;
+	}
+}

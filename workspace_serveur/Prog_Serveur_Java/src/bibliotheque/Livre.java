@@ -7,14 +7,17 @@ import exceptions.PasLibreException;
 
 
 public class Livre implements Document{
+
+	private final int tempsEmpruntMax = 10000;
+	private final int tempsReservation = 7200 * 1000; //7200s correspond à 2 heures
 	
 	private Abonne reservataire;
 	private int numero;
 	private Statut statut;
 	private Timer temps;
+	private Abonne emprunteur;
 	public Livre(int numero)
 	{
-		this.temps = new Timer();
 		this.numero = numero;
 		this.statut = Statut.libre;
 	}
@@ -40,15 +43,16 @@ public class Livre implements Document{
 					System.out.println("Le document " + this.numero + " a ete reserve par l'abonne " + ab.getNumero());
 					this.statut = Statut.reserve;
 					this.reservataire = ab;
+					this.temps = new Timer();
 					temps.schedule(new TimerTask() {
 						
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
 							System.out.println("Le délai de réservation sur le document " + Livre.this.numero + " a expir�");
-							Livre.this.retour();
+							Livre.this.retour(false);
 						}
-					}, 7200 * 1000); // 7200s correspond à 2 heures
+					}, tempsReservation);
 					break;
 			}
 		}
@@ -73,16 +77,34 @@ public class Livre implements Document{
 					{
 						System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
 						this.statut = Statut.emprunte;
-						this.temps.cancel();
+						this.temps = new Timer();
+						temps.schedule(new TimerTask() {
+							
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								Bibliotheque.bannir(emprunteur);
+							}
+						}, tempsEmpruntMax);
 						break;
 					}
 					else
-						throw new PasLibreException("Le document " + this.numero + " est en r�servation");
+						throw new PasLibreException("Le document " + this.numero + " est en reservation");
 				case emprunte:
 					throw new PasLibreException("Le document " + this.numero + " est deja sous emprunt");
 				case libre:
 					System.out.println("Le document " + this.numero + " a ete emprunte par l'abonne " + ab.getNumero());
 					this.statut = Statut.emprunte;
+					this.emprunteur = ab;
+					this.temps = new Timer();
+					temps.schedule(new TimerTask() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							Bibliotheque.bannir(emprunteur);
+						}
+					}, tempsEmpruntMax);
 					break;
 			}
 		}
@@ -90,8 +112,14 @@ public class Livre implements Document{
 	
 	
 	@Override
-	public void retour() {
+	public void retour(boolean estAbime) {
+		if(estAbime)
+			Bibliotheque.bannir(emprunteur);
 		this.statut = Statut.libre;
+		this.temps.cancel();//On annule le timer
+		//Le temps de réservation ne sert plus à rien puisqu'il y a retour
+		//Il en est de même pour l'emprunt
+		
 	}
 	
 	

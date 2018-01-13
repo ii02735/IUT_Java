@@ -16,7 +16,7 @@ public class AccesServices implements Runnable{
 			try {
 				IAccesServicesFactory acces = new AccesServiceFactory();
 				System.out.println("\nChoisir le service à lancer.");
-				System.out.println("- Emprunt\n- Reservation\n- Retour\n- Fermer");
+				System.out.println("- Emprunt\n- Reservation\n- Retour");
 				BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 				String service;
 				service = input.readLine();

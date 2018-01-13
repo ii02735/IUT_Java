@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import bibliotheque.Abonne;
 import bibliotheque.Bibliotheque;
+import exceptions.AbonneBanniException;
 import exceptions.PasLibreException;
 
 public class ServiceEmprunt implements Runnable{
@@ -44,7 +45,8 @@ public class ServiceEmprunt implements Runnable{
 			numero = Integer.parseInt(convertisseur.readLine());
 			
 			ab = Bibliotheque.identifierAbonne(numero);
-			
+			if(ab.getEstBanni())
+				throw new AbonneBanniException();
 			out.println("read");
 			out.println("Saisir le numero du document a emprunter");
 			out.println("write");
@@ -57,7 +59,7 @@ public class ServiceEmprunt implements Runnable{
 			out.println("quitter");
 			System.err.println("Service emprunt : Utilisateur déconnecté");
 		}
-		catch(PasLibreException | NumberFormatException | IOException e)
+		catch(PasLibreException | NumberFormatException | IOException | AbonneBanniException e)
 		{
 			System.err.println("Service emprunt : Utilisateur déconnecté");
 			out.println("Exception");

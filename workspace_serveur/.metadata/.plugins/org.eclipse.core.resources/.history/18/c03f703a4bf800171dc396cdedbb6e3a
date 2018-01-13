@@ -1,0 +1,10 @@
+package serveur;
+
+import java.io.IOException;
+
+import serveur.Serveur;
+
+public interface IServeurFactory {
+	
+	Serveur creerServeur(String nom) throws IOException;
+}

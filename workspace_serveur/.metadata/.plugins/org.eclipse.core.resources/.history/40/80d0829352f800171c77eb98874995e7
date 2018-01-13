@@ -1,0 +1,23 @@
+package factory_services;
+
+import serveur.PORT;
+import client.IAccesServicesFactory;
+import client.InputOutput;
+import exceptions.AccesException;
+
+public class AccesServiceFactory implements IAccesServicesFactory{
+	
+	@Override
+	public InputOutput creerAcces(String nomService) throws AccesException {
+		// TODO Auto-generated method stub
+		if(nomService == "Emprunt")
+			return new InputOutput("127.0.1.1",PORT.EMPRUNT);
+		else if(nomService == "Reservation")
+			return new InputOutput("127.0.1.1", PORT.RESERVATION);
+		else if(nomService == "Retour")
+			return new InputOutput("127.0.1.1",PORT.RETOUR);
+		throw new AccesException();
+	}
+
+
+}

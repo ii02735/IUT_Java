@@ -1,0 +1,14 @@
+package service;
+
+import factory.IServiceFactory;
+
+public class ServiceFactory implements IServiceFactory{
+
+	@Override
+	public Thread creerService(String nomService) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

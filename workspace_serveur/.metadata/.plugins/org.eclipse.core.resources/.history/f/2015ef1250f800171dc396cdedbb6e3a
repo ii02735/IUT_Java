@@ -1,0 +1,7 @@
+package client;
+
+
+public interface ILancementFactory {
+	
+	InputOutput creerLancement(String nomService);
+}

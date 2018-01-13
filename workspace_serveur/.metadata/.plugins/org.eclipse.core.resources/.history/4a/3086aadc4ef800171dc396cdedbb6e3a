@@ -1,0 +1,8 @@
+package factory;
+
+import client.InputOutput;
+
+public interface ILancementFactory {
+	
+	InputOutput creerService(String nomService);
+}

@@ -1,0 +1,6 @@
+package factory;
+
+public interface IServiceFactory {
+	
+	Thread creerService(String nomService);
+}

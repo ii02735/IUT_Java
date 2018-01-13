@@ -1,0 +1,30 @@
+package bibliotheque;
+
+//import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class TestClassique {
+	
+	@Before
+	public void prepare()
+	{
+		Bibliotheque.ajouterAbonne(544);
+		Bibliotheque.ajouterAbonne(355);
+		Bibliotheque.ajouterAbonne("654");
+		Bibliotheque.ajouterDocuments(new Livre(745));
+		Bibliotheque.ajouterDocuments(new Livre(746));
+		Bibliotheque.ajouterDocuments(new Livre(747));
+	}
+	
+	@Test
+	public void test() throws PasLibreException {
+		
+		Bibliotheque.getDocument(2).emprunter(Bibliotheque.getAbonne(0));
+		Bibliotheque.getDocument(1).emprunter(Bibliotheque.getAbonne(1));
+		Bibliotheque.getDocument(0).reserver(Bibliotheque.getAbonne(0));
+		Bibliotheque.getDocument(0).emprunter(Bibliotheque.getAbonne(1));
+	}
+
+}

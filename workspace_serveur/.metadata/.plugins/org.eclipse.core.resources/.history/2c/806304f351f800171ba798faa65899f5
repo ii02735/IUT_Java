@@ -1,0 +1,9 @@
+package client;
+
+import exceptions.AccesException;
+
+
+public interface IAccesFactory {
+	
+	InputOutput creerAcces(String nomService) throws AccesException;
+}

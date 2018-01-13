@@ -1,0 +1,11 @@
+package client;
+
+import service.AccesServices;
+
+public class Client {
+	
+	public static void main(String[]args)
+	{
+		new Thread(new AccesServices()).start();
+	}
+}

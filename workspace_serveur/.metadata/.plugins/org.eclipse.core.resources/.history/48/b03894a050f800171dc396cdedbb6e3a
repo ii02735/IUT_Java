@@ -1,0 +1,18 @@
+package factory_services;
+
+import client.IAccesFactory;
+import client.InputOutput;
+
+public class AccesFactory implements IAccesFactory{
+	
+	@Override
+	public InputOutput creerAcces(String nomService) {
+		// TODO Auto-generated method stub
+		InputOutput io = null;
+		if(nomService == "Emprunt")
+			
+		return null;
+	}
+
+
+}

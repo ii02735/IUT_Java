@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="factory.IServiceFactory"/>
+<fullyQualifiedTypeName name="client.InputOutput"/>
+<fullyQualifiedTypeName name="serveur.PORT"/>
+<fullyQualifiedTypeName name="exceptions.ServiceException"/>
+<fullyQualifiedTypeName name="exceptions.AccesException"/>
+<fullyQualifiedTypeName name="factory_services.AccesFactory"/>
+</qualifiedTypeNameHistroy>

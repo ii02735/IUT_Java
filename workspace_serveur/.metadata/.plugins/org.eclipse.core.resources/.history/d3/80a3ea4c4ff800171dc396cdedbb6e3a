@@ -1,0 +1,16 @@
+package factory_serveur;
+
+import client.ILancementFactory;
+import client.InputOutput;
+
+public class ServiceFactory implements ILancementFactory{
+	
+	@Override
+	public InputOutput creerService(String nomService) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
+
+}

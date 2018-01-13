@@ -1,0 +1,7 @@
+package client;
+
+
+public interface IAccesFactory {
+	
+	InputOutput creerAcces(String nomService);
+}

@@ -1,0 +1,18 @@
+package factory_services;
+
+import client.ILancementFactory;
+import client.InputOutput;
+
+public class AccesFactory implements ILancementFactory{
+	
+	@Override
+	public InputOutput creerLancement(String nomService) {
+		// TODO Auto-generated method stub
+		InputOutput io = null;
+		if(nomService == "Emprunt")
+			
+		return null;
+	}
+
+
+}
